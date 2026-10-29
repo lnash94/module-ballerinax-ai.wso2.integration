@@ -96,7 +96,7 @@ public isolated class CloudKnowledgeBase {
     public isolated function ingest(ai:Chunk[]|ai:Document[]|ai:Document documents) returns ai:Error? {
         do {
             KnowledgeBaseIngestRequest ingestRequest = check createIngestRequest(documents);
-            http:Response response = check self.serviceClient->/ingest.post(
+            http:Response response = check self.serviceClient->/ingest/content.post(
                 ingestRequest, {}, APPLICATION_JSON
             );
             check validateResponse(response);

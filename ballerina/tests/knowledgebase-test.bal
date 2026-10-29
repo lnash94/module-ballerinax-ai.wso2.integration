@@ -20,7 +20,7 @@ import ballerina/test;
 import ballerina/time;
 
 service on new http:Listener(9090) {
-    resource function post ingest(http:Request req) returns http:Response|error {
+    resource function post ingest/content(http:Request req) returns http:Response|error {
         if !req.getContentType().startsWith(APPLICATION_JSON) {
             return error("Expected an application/json request");
         }
